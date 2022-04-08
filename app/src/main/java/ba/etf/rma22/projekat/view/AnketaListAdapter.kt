@@ -27,10 +27,14 @@ class AnketaListAdapter(private var ankete: List<Anketa>) : RecyclerView.Adapter
     }
 
     private fun zaokruziProgres(progres: Float) : Int {
-        val broj : Int = (progres*100).roundToInt()
-        for(i in 100 downTo 0 step 20)
-            if(i-broj < 10)
-                return i
+        val broj : Int = (progres*100).toInt()
+        if(broj > 84)
+            return 100
+        else if(broj in 6..84) {
+            for (i in 84 downTo 5 step 20)
+                if (i - broj < 20)
+                    return i-4
+        }
         return 0
     }
 

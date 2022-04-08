@@ -40,7 +40,7 @@ fun anketa() : List<Anketa> {
         Anketa(
             "Anketa 6", "Istraživanje broj: 6",
             calendarToDate(2022, 1, 1),
-            calendarToDate(2022, 4, 3), calendarToDate(2022, 2, 7), "RI2", 0.71F
+            calendarToDate(2022, 4, 3), calendarToDate(2022, 2, 7), "RI2", 1F
         ),
         Anketa(
             "Anketa 7", "Istraživanje broj: 7",   calendarToDate(2021, 7, 15),
@@ -50,13 +50,13 @@ fun anketa() : List<Anketa> {
             "Anketa 8", "Istraživanje broj: 8",
             calendarToDate(2022, 6, 22),
             calendarToDate(2022, 8, 8),
-            calendarToDate(2022, 7, 18), "RI1.3", 0.21F,
+            calendarToDate(2022, 7, 18), "RI1.3", 0.26F,
         ),
         Anketa(
             "Anketa 9", "Istraživanje broj: 9",
             calendarToDate(2021, 2, 24),
             calendarToDate(2021, 3, 24),
-            calendarToDate(2021, 3, 18), "8", 0.31F,
+            calendarToDate(2021, 3, 18), "8", 1F,
         ),
         Anketa(
             "Anketa 10", "Istraživanje broj: 10",
