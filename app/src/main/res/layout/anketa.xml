@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="10dp"
+    android:layout_marginBottom="2dp"
+    app:cardElevation="0dp"
+    app:cardPreventCornerOverlap="true"
+    app:cardUseCompatPadding="true"
+    app:cardBackgroundColor="@color/teal_700">
+
+    <RelativeLayout
+        android:layout_width="550dp"
+        android:layout_height="186dp"
+        android:padding="5dp">
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="20dp"
+            android:text="Anketa    "
+            android:textColor="@color/black"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="117dp"
+            android:layout_height="23dp"
+            android:layout_alignEnd="@+id/crvena"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="64dp"
+            android:layout_marginEnd="41dp"
+            android:layout_marginBottom="94dp"
+            android:text="Istraživanje broj" />
+
+        <ProgressBar
+            android:id="@+id/progresZavrsetka"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="150dp"
+            android:layout_height="70dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="119dp"
+            android:scaleY="4"
+            android:layout_marginBottom="67dp" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:textSize="12dp"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="138dp"
+            android:background="#00ffff"
+            android:text="Anketa urađena: "
+            android:textAlignment="center" />
+
+        <ImageView
+            android:id="@+id/crvena"
+            android:layout_width="21dp"
+            android:layout_height="19dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="151dp"
+            android:layout_marginBottom="154dp"></ImageView>
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
