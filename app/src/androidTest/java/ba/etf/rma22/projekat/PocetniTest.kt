@@ -32,7 +32,7 @@ class PocetniTest {
 
         onView(withId(R.id.filterAnketa)).check(matches(isDisplayed()))
         onView(withId(R.id.listaAnketa)).check(matches(isDisplayed()))
-        //onView(withId(R.id.upisDugme)).check(matches(isDisplayed()))
+        onView(withId(R.id.upisDugme)).check(matches(isDisplayed()))
 
         var listaOdabira = listOf<String>(
             "Sve moje ankete",
@@ -64,10 +64,10 @@ class PocetniTest {
 
     @Test
     fun godineTest() {
-        //onView(withId(R.id.upisDugme)).perform(click())
+        onView(withId(R.id.upisDugme)).perform(click())
         var listaOdabira = listOf<String>("1", "2", "3", "4", "5")
         for (odabir in listaOdabira) {
-            //onView(withId(R.id.odabirGodina)).perform(click())
+            onView(withId(R.id.odabirGodina)).perform(click())
             onData(allOf(Is(instanceOf(String::class.java)), Is(odabir))).perform(click())
         }
     }
