@@ -6,16 +6,13 @@ import ba.etf.rma22.projekat.data.models.Istrazivanje
 
 object KorisnikRepository {
 
-    private lateinit var mojaIstrazivanja: List<Istrazivanje>;
-    private lateinit var mojeGrupe: List<Grupa>;
-
-    init{
-        mojaIstrazivanja = listOf(Istrazivanje("Istraživanje broj: 1",3), Istrazivanje("Istraživanje broj: 6",2),
-            Istrazivanje("Istraživanje broj: 8",1), Istrazivanje("Istraživanje broj: 11", 1)
+    private var mojaIstrazivanja: ArrayList<Istrazivanje> =
+        arrayListOf(Istrazivanje("PPG",1), Istrazivanje("TDG",2),
+            Istrazivanje("PTG",3), Istrazivanje("DČG", 4)
         )
-        mojeGrupe = listOf(Grupa("RI3","Istraživanje broj: 1"), Grupa("RI2","Istraživanje broj: 6"),
-            Grupa("RI1.3","Istraživanje broj: 8"),Grupa("RI1.1","Istraživanje broj: 11"))
-    }
+    private var mojeGrupe: ArrayList<Grupa> =
+        arrayListOf(Grupa("PPG-grupa2","PPG"), Grupa("TDG-grupa3","TDG"),
+            Grupa("PTG-grupa2","PTG"),Grupa("DČG-grupa3","DČG"))
 
     private fun daLiJeMojaAnketa(anketa: Anketa) : Boolean{
         for(grupa in mojeGrupe)
@@ -31,4 +28,10 @@ object KorisnikRepository {
                 listaAnekta+=anketa
         return listaAnekta
     }
+
+    fun getMojaIstrazivanja() : List<Istrazivanje> = mojaIstrazivanja
+
+    fun upisiIstrazivanje(istrazivanje: Istrazivanje) = mojaIstrazivanja.add(istrazivanje)
+
+    fun upisiGrupu(grupa: Grupa) = mojeGrupe.add(grupa)
 }

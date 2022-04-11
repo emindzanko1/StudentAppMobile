@@ -20,6 +20,7 @@ class MainActivity : AppCompatActivity() {
     private var anketeViewModel = AnketaListViewModel()
     private lateinit var spinner: Spinner
     private lateinit var floatingActionButton: FloatingActionButton
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -48,6 +49,17 @@ class MainActivity : AppCompatActivity() {
         floatingActionButton.setOnClickListener(){
             val intent = Intent(this,UpisIstrazivanje::class.java)
             startActivity(intent)
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        when(spinner.selectedItemPosition){
+            0-> anketeAdapter.updateAnkete(anketeViewModel.getMyAnkete())
+            1 -> anketeAdapter.updateAnkete(anketeViewModel.getAll())
+            2 -> anketeAdapter.updateAnkete(anketeViewModel.getDone())
+            3 -> anketeAdapter.updateAnkete(anketeViewModel.getFuture())
+            else -> anketeAdapter.updateAnkete(anketeViewModel.getNotTaken())
         }
     }
 }
