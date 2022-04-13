@@ -26,7 +26,7 @@ class AnketaListViewTest {
 
     @Test
     fun getAll() {
-        val ankete = AnketaRepository.getAll()
+        val ankete = anketaListViewModel.getAll()
         assertEquals(ankete.size, 12)
         assertFalse(ankete.isEmpty())
         assertThat(ankete, hasItem<Anketa>(
@@ -45,7 +45,7 @@ class AnketaListViewTest {
     }
 
     @Test
-    fun getMojiKvizovi() {
+    fun getMyAnkete() {
         val ankete = anketaListViewModel.getMyAnkete()
         assertTrue(ankete.isNotEmpty())
         assertEquals(ankete.size, 4)
