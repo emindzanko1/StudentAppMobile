@@ -1,17 +1,12 @@
 package ba.etf.rma22.projekat
 
-import android.content.ClipData
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.*
 import ba.etf.rma22.projekat.data.models.Grupa
 import ba.etf.rma22.projekat.data.models.Istrazivanje
-import ba.etf.rma22.projekat.data.models.grupe
-import ba.etf.rma22.projekat.data.repositories.IstrazivanjeRepository
 import ba.etf.rma22.projekat.viewmodel.UpisIstrazivanjeViewModel
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class UpisIstrazivanje : AppCompatActivity() {
     private lateinit var spinnerZaGodine: Spinner
@@ -47,22 +42,23 @@ class UpisIstrazivanje : AppCompatActivity() {
             if(p0!!.id  == R.id.odabirGodina){
                 godina = spinnerZaGodine.selectedItem.toString()
                 if(godina != "Odaberite godinu") {
-                    spinnerZaIstrazivanje.isEnabled = true
-                    spinnerZaGrupe.isEnabled = false
                     listaIstrazivanja.clear()
                     val lista = upisIstrazivanjeViewModel.getIstrazivanjeByGodina(godina.toInt())
                     val novaLista = izIstrazivanjaUString(lista)
+                    listaIstrazivanja.add("Odaberite istrazivanje")
                     listaIstrazivanja.addAll(novaLista)
+                    spinnerZaIstrazivanjeAdapter.notifyDataSetChanged()
                 }
             }
             else if(p0.id == R.id.odabirIstrazivanja){
                 istrazivanje = spinnerZaIstrazivanje.selectedItem.toString()
                 if(istrazivanje != "Odaberite istrazivanje") {
-                    spinnerZaGrupe.isEnabled = true
                     listaGrupa.clear()
                     val lista = upisIstrazivanjeViewModel.getGroupsByIstrazivanje(istrazivanje)
                     val novaLista = izGrupaUString(lista)
+                    listaGrupa.add("Odaberite grupu")
                     listaGrupa.addAll(novaLista)
+                    spinnerZaGrupeAdapter.notifyDataSetChanged()
                 }
             }
             else if(p0.id == R.id.odabirGrupa){
@@ -84,17 +80,12 @@ class UpisIstrazivanje : AppCompatActivity() {
         spinnerZaGodineAdapter = ArrayAdapter(this,android.R.layout.simple_list_item_1,godine)
         spinnerZaGodine.adapter = spinnerZaGodineAdapter
         spinnerZaIstrazivanje = findViewById(R.id.odabirIstrazivanja)
-        listaIstrazivanja+="Odaberite istrazivanje"
         spinnerZaIstrazivanjeAdapter = ArrayAdapter(this,android.R.layout.simple_list_item_1,listaIstrazivanja)
         spinnerZaIstrazivanje.adapter = spinnerZaIstrazivanjeAdapter
         spinnerZaGrupe = findViewById(R.id.odabirGrupa)
-        listaGrupa+="Odaberite grupu"
         spinnerZaGrupeAdapter= ArrayAdapter(this,android.R.layout.simple_list_item_1,listaGrupa)
         spinnerZaGrupe.adapter = spinnerZaGrupeAdapter
         dodajIstrazivanjeDugme = findViewById(R.id.dodajIstrazivanjeDugme)
-        dodajIstrazivanjeDugme.isEnabled = false
-        spinnerZaIstrazivanje.isEnabled = false
-        spinnerZaGrupe.isEnabled = false
         spinnerZaGodine.onItemSelectedListener = listener
         spinnerZaIstrazivanje.onItemSelectedListener = listener
         spinnerZaGrupe.onItemSelectedListener = listener
