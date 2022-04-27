@@ -16,7 +16,7 @@ import ba.etf.rma22.projekat.data.models.Anketa
 import java.util.*
 import kotlin.math.roundToInt
 
-class AnketaListAdapter(private var ankete: List<Anketa>) : RecyclerView.Adapter<AnketaListAdapter.AnketaViewHolder>() {
+class AnketaListAdapter(private var ankete: List<Anketa>, private val onItemClicked: (anketa : Anketa) -> Unit) : RecyclerView.Adapter<AnketaListAdapter.AnketaViewHolder>() {
 
     override fun getItemCount(): Int = ankete.size
 
@@ -75,6 +75,7 @@ class AnketaListAdapter(private var ankete: List<Anketa>) : RecyclerView.Adapter
         val context: Context = holder.imageView.context
         var id: Int = context.resources.getIdentifier(boja, "drawable", context.packageName)
         holder.imageView.setImageResource(id)
+        holder.itemView.setOnClickListener{onItemClicked(ankete[position])}
     }
 
     inner class AnketaViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

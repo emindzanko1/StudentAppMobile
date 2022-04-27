@@ -11,7 +11,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 
-@RunWith(AndroidJUnit4::class)
+/*@RunWith(AndroidJUnit4::class)
 class LayoutTest {
     @get:Rule
     val mainLayout = ActivityScenarioRule<MainActivity>(MainActivity::class.java)
@@ -57,6 +57,6 @@ class LayoutTest {
         Espresso.onView(withId(R.id.odabirIstrazivanja)).check(isCompletelyAbove(withId(R.id.odabirGrupa)))
         Espresso.onView(withId(R.id.odabirGrupa)).check(isCompletelyAbove(withId(R.id.dodajIstrazivanjeDugme)))
     }
-}
+}*/
 
 

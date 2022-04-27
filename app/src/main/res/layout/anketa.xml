@@ -12,6 +12,7 @@
     app:cardBackgroundColor="@color/teal_700">
 
     <RelativeLayout
+        android:id="@+id/anketa"
         android:layout_width="550dp"
         android:layout_height="186dp"
         android:padding="5dp">

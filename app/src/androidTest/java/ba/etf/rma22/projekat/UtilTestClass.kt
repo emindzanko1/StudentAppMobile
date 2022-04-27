@@ -18,8 +18,66 @@ import org.hamcrest.CoreMatchers
 import org.hamcrest.Description
 import org.hamcrest.Matcher
 import org.hamcrest.TypeSafeMatcher
+import android.graphics.drawable.ColorDrawable
+import android.widget.TextView
+import junit.framework.Assert.assertTrue
 
 class UtilTestClass {
+    companion object{
+        fun hasItemCount(n: Int) = object : ViewAssertion {
+            override fun check(view: View?, noViewFoundException: NoMatchingViewException?) {
+                if (noViewFoundException != null) {
+                    throw noViewFoundException
+                }
+                assertTrue("View nije tipa RecyclerView", view is RecyclerView)
+                var rv: RecyclerView = view as RecyclerView
+                ViewMatchers.assertThat(
+                    "GetItemCount RecyclerView broj elementa: ",
+                    rv.adapter?.itemCount,
+                    CoreMatchers.`is`(n)
+                )
+            }
+
+        }
+
+        fun itemTest(id:Int, k: Anketa){
+            Espresso.onView(ViewMatchers.withId(R.id.listaAnketa)).perform(
+                RecyclerViewActions.scrollTo<RecyclerView.ViewHolder>(
+                    CoreMatchers.allOf(
+                        ViewMatchers.hasDescendant(ViewMatchers.withText(k.naziv)),
+                        ViewMatchers.hasDescendant(ViewMatchers.withText(k.nazivIstrazivanja))
+                    )
+                )
+            )
+        }
+        fun withTextColor(trazenaBoja: Int) = object:TypeSafeMatcher<View>(){
+            override fun describeTo(description: Description) {
+                description.appendText("Nema tekst zelene boje")
+            }
+
+            override fun matchesSafely(item: View): Boolean {
+                if(!(item is TextView)) return false;
+                return item.currentTextColor== trazenaBoja
+
+            }
+
+        }
+        fun withBackground(trazenaBoja:Int) = object:TypeSafeMatcher<View>(){
+            override fun describeTo(description: Description) {
+                description.appendText("Nema pozadinu zelene boje")
+            }
+
+            override fun matchesSafely(item: View): Boolean {
+                if(!(item.background is ColorDrawable)) return false;
+                var boja = item.background as ColorDrawable
+                return boja.color==trazenaBoja
+            }
+
+        }
+    }
+}
+
+/*class UtilTestClass {
     companion object {
         fun hasItemCount(n: Int) = object : ViewAssertion {
             override fun check(view: View?, noViewFoundException: NoMatchingViewException?) {
@@ -103,4 +161,4 @@ class UtilTestClass {
             }
         }
     }
-}
+}*/
