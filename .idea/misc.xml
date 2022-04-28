@@ -3,15 +3,19 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Emin/AndroidStudioProjects/Spirala12/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/Emin/AndroidStudioProjects/Spirala12/app/src/main/res/layout/activity_main.xml" value="0.16" />
         <entry key="..\:/Users/Emin/AndroidStudioProjects/Spirala12/app/src/main/res/layout/activity_upis_istrazivanje.xml" value="0.264" />
         <entry key="..\:/Users/Emin/AndroidStudioProjects/Spirala12/app/src/main/res/layout/anketa.xml" value="0.4" />
         <entry key="..\:/Users/Emin/AndroidStudioProjects/Spirala12/app/src/main/res/layout/cuvaj.xml" value="0.2006340579710145" />
         <entry key="..\:/Users/Emin/AndroidStudioProjects/Spirala12/app/src/main/res/layout/fragment_ankete.xml" value="0.2006340579710145" />
         <entry key="..\:/Users/Emin/AndroidStudioProjects/Spirala12/app/src/main/res/layout/fragment_istrazivanja.xml" value="0.1" />
         <entry key="..\:/Users/Emin/AndroidStudioProjects/Spirala12/app/src/main/res/layout/fragment_istrazivanje.xml" value="0.2006340579710145" />
+        <entry key="..\:/Users/Emin/AndroidStudioProjects/Spirala12/app/src/main/res/layout/fragment_pitanje.xml" value="0.176" />
         <entry key="..\:/Users/Emin/AndroidStudioProjects/Spirala12/app/src/main/res/layout/fragment_poruka.xml" value="0.2" />
+        <entry key="..\:/Users/Emin/AndroidStudioProjects/Spirala12/app/src/main/res/layout/fragment_predaj.xml" value="0.20153985507246377" />
         <entry key="..\:/Users/Emin/AndroidStudioProjects/Spirala12/app/src/main/res/layout/navigation.xml" value="0.16847826086956522" />
+        <entry key="..\:/Users/Emin/AndroidStudioProjects/Spirala12/app/src/main/res/layout/root.xml" value="0.11574074074074074" />
+        <entry key="..\:/Users/Emin/AndroidStudioProjects/Spirala12/app/src/main/res/layout/root_fragment.xml" value="0.1" />
       </map>
     </option>
   </component>

@@ -49,7 +49,6 @@ class PocetniTest {
         for (anketa in ankete) {
             itemTest(R.id.listaAnketa, anketa)
         }
-
     }
 
     @Test
@@ -61,7 +60,6 @@ class PocetniTest {
             onData(allOf(Is(instanceOf(String::class.java)), Is(odabir))).perform(click())
         }
     }
-
 }
 
 /*@RunWith(AndroidJUnit4::class)

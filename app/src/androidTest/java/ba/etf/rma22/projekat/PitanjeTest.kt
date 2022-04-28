@@ -10,7 +10,7 @@ import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import ba.etf.rma22.projekat.data.repositories.AnketaRepository
-//import ba.etf.rma22.projekat.data.repositories.PitanjeAnketaRepository
+import ba.etf.rma22.projekat.data.repositories.PitanjeAnketaRepository
 import org.hamcrest.CoreMatchers
 import org.hamcrest.core.AllOf.allOf
 import org.junit.Rule
@@ -18,7 +18,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 
-/*@RunWith(AndroidJUnit4::class)
+@RunWith(AndroidJUnit4::class)
 class PitanjeTest {
     @get:Rule
     val intentsTestRule = ActivityScenarioRule(MainActivity::class.java)
@@ -51,4 +51,4 @@ class PitanjeTest {
         onView(withId(R.id.dugmePredaj)).perform(click())
         onView(withSubstring("Završili ste anketu")).check(matches(isDisplayed()))
     }
-}*/
+}

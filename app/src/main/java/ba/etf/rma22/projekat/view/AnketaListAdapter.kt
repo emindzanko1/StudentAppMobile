@@ -1,6 +1,5 @@
 package ba.etf.rma22.projekat.view
 
-import android.animation.ObjectAnimator
 import android.content.Context
 import android.icu.text.SimpleDateFormat
 import android.icu.util.Calendar
@@ -14,7 +13,6 @@ import androidx.recyclerview.widget.RecyclerView
 import ba.etf.rma22.projekat.R
 import ba.etf.rma22.projekat.data.models.Anketa
 import java.util.*
-import kotlin.math.roundToInt
 
 class AnketaListAdapter(private var ankete: List<Anketa>, private val onItemClicked: (anketa : Anketa) -> Unit) : RecyclerView.Adapter<AnketaListAdapter.AnketaViewHolder>() {
 
@@ -75,7 +73,10 @@ class AnketaListAdapter(private var ankete: List<Anketa>, private val onItemClic
         val context: Context = holder.imageView.context
         var id: Int = context.resources.getIdentifier(boja, "drawable", context.packageName)
         holder.imageView.setImageResource(id)
-        holder.itemView.setOnClickListener{onItemClicked(ankete[position])}
+        holder.itemView.setOnClickListener{
+            //Toast.makeText(context, "clicked $boja", Toast.LENGTH_SHORT).show()
+            onItemClicked(ankete[position])
+        }
     }
 
     inner class AnketaViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -90,5 +91,6 @@ class AnketaListAdapter(private var ankete: List<Anketa>, private val onItemClic
         this.ankete = ankete.sortedBy { anketa -> anketa.datumPocetka }
         notifyDataSetChanged()
     }
+
 }
 
