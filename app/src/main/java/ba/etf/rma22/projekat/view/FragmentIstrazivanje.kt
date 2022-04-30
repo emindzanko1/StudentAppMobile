@@ -1,4 +1,5 @@
 package ba.etf.rma22.projekat.view
+
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -29,7 +30,6 @@ class FragmentIstrazivanje : Fragment() {
     private var godina = ""
     private var istrazivanje = ""
     private var grupa = ""
-    private lateinit var viewPagerAdapter: ViewPagerAdapter
 
     private var listener = object : AdapterView.OnItemSelectedListener{
         override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
@@ -110,7 +110,6 @@ class FragmentIstrazivanje : Fragment() {
         dodajIstrazivanjeDugme.setOnClickListener{
             upisIstrazivanjeViewModel.upisiIstrazivanje(godina,istrazivanje,grupa)
             val poruka = "Uspješno ste upisani u grupu " + grupa + " istraživanja " + istrazivanje + "!"
-            val fragmentPoruka = FragmentPoruka.newInstance(poruka)
             (activity as MainActivity).refreshSecondFragmentPorukaText(poruka)
         }
         return view

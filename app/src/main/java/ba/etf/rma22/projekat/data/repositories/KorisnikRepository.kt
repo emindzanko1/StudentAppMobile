@@ -10,6 +10,7 @@ object KorisnikRepository {
         arrayListOf(Istrazivanje("PPG",1), Istrazivanje("TDG",2),
             Istrazivanje("PTG",3), Istrazivanje("DČG", 4)
         )
+
     private var mojeGrupe: ArrayList<Grupa> =
         arrayListOf(Grupa("PPG-grupa2","PPG"), Grupa("TDG-grupa3","TDG"),
             Grupa("PTG-grupa2","PTG"),Grupa("DČG-grupa3","DČG"))

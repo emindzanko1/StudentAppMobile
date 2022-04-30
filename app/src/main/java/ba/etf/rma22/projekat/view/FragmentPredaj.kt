@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import ba.etf.rma22.projekat.MainActivity
 import ba.etf.rma22.projekat.R
 
 class FragmentPredaj : Fragment() {
@@ -19,9 +20,22 @@ class FragmentPredaj : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        var view = inflater.inflate(R.layout.fragment_poruka,container,false)
-        textView = view.findViewById(R.id.progresTekst)
-        button = view.findViewById(R.id.dugmePredaj)
+        var view = inflater.inflate(R.layout.fragment_predaj,container,false)
+        textView = view.findViewById(R.id.progresTekst)!!
+        button = view.findViewById(R.id.dugmePredaj)!!
+
+        textView.text = "100%"
+
+        button.setOnClickListener(){
+
+            val poruka = "Završili ste anketu " + " u okviru istraživanja "
+
+            (activity as MainActivity).viewPagerAdapter.pitanja(poruka)
+            (activity as MainActivity).viewPager.currentItem = 1
+            (activity as MainActivity).viewPager.adapter = (activity as MainActivity).viewPagerAdapter
+
+        }
+
         return view
     }
 

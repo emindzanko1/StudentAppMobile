@@ -1,8 +1,6 @@
 package ba.etf.rma22.projekat.data.repositories
 
-import ba.etf.rma22.projekat.data.models.Pitanje
-import ba.etf.rma22.projekat.data.models.pitanja
-import ba.etf.rma22.projekat.data.models.pitanjaZaAnketu
+import ba.etf.rma22.projekat.data.models.*
 
 object PitanjeAnketaRepository {
 
@@ -17,4 +15,7 @@ object PitanjeAnketaRepository {
          }
         return listaPitanja
     }
+
+    fun getAll(): List<PitanjeAnketa> = pitanjaZaAnketu()
+
 }

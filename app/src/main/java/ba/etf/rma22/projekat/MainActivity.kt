@@ -4,33 +4,24 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.os.SystemClock.sleep
-import android.widget.Button
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentPagerAdapter
-import androidx.test.espresso.Espresso
 import androidx.viewpager2.widget.ViewPager2
 import ba.etf.rma22.projekat.data.models.Anketa
-import ba.etf.rma22.projekat.data.models.Pitanje
-import ba.etf.rma22.projekat.data.models.pitanja
-import ba.etf.rma22.projekat.data.repositories.AnketaRepository
 import ba.etf.rma22.projekat.data.repositories.PitanjeAnketaRepository
 import ba.etf.rma22.projekat.view.*
-import com.google.android.material.navigation.NavigationBarView
 
 class MainActivity : AppCompatActivity() {
 
     lateinit var viewPager: ViewPager2
-    private lateinit var viewPagerAdapter: ViewPagerAdapter
-    private lateinit var viewPagerAdapter2: ViewPagerAdapter
-    var listaFragmenata: ArrayList<Fragment> = arrayListOf()
+    lateinit var viewPagerAdapter: ViewPagerAdapter
+    lateinit var viewPagerAdapter2: ViewPagerAdapter
+    private lateinit var fragments: MutableList<Fragment>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         viewPager = findViewById(R.id.pager)
-        val fragments = mutableListOf(
+        fragments = mutableListOf(
             FragmentAnkete(),
             FragmentIstrazivanje()
         )
@@ -59,19 +50,23 @@ class MainActivity : AppCompatActivity() {
 
 
     fun showAnketaDetails(anketa: Anketa) {
-        val fragmentPitanje = FragmentPitanje()
-        viewPagerAdapter.refreshFragment(0,fragmentPitanje)
-        var listaPitanja = PitanjeAnketaRepository.getPitanja(anketa.naziv,anketa.nazivIstrazivanja).size
+        var brojPitanja =
+            PitanjeAnketaRepository.getPitanja(anketa.naziv, anketa.nazivIstrazivanja).size
+        var listaPitanja =
+            PitanjeAnketaRepository.getPitanja(anketa.naziv, anketa.nazivIstrazivanja)
+        fragments.removeAt(0)
         var brojac: Int = 0
-        val fragments = mutableListOf(
-            fragmentPitanje
-        )
-        viewPagerAdapter2 = ViewPagerAdapter(supportFragmentManager,
-            fragments.toMutableList(),lifecycle)
-        val dugme: Button
-        while(brojac < listaPitanja) {
-            viewPagerAdapter2.add(brojac,fragmentPitanje)
+        while (brojac < brojPitanja) {
+            val fragmentPitanje = FragmentPitanje(listaPitanja[brojac])
+            fragments.add(brojac, fragmentPitanje)
             brojac++
         }
+        viewPagerAdapter2 = ViewPagerAdapter(
+            supportFragmentManager,
+            fragments, lifecycle
+        )
+        viewPager.adapter = viewPagerAdapter2
+        val fragmentPredaj = FragmentPredaj()
+        fragments.add(brojPitanja, fragmentPredaj)
     }
 }

@@ -37,6 +37,18 @@ class ViewPagerAdapter(fragmentManager: FragmentManager, var fragments: MutableL
         fragments.removeAt(index)
         notifyItemChanged(index)
     }
+
+    fun change(){
+        fragments.clear()
+        fragments.add(FragmentAnkete())
+        fragments.add(FragmentIstrazivanje())
+    }
+
+    fun pitanja(poruka: String){
+        fragments.clear()
+        fragments.add(0,FragmentAnkete())
+        fragments.add(1,FragmentPoruka(poruka))
+    }
 }
 
 

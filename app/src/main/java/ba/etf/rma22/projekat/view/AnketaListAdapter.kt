@@ -74,7 +74,6 @@ class AnketaListAdapter(private var ankete: List<Anketa>, private val onItemClic
         var id: Int = context.resources.getIdentifier(boja, "drawable", context.packageName)
         holder.imageView.setImageResource(id)
         holder.itemView.setOnClickListener{
-            //Toast.makeText(context, "clicked $boja", Toast.LENGTH_SHORT).show()
             onItemClicked(ankete[position])
         }
     }

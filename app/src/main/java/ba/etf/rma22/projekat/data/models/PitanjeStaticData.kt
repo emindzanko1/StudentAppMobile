@@ -26,7 +26,7 @@ fun pitanja() : List<Pitanje> {
 
         Pitanje("DDG-Pitanje1","Koliko predmeta ima u 3. semestru?",
             listOf("4","7","6")),
-        Pitanje("DDG-Pitanje2","U kojem programskom jeziku programirano na RPR-u?",
+        Pitanje("DDG-Pitanje2","U kojem programskom jeziku programiramo na RPR-u?",
             listOf("Kotlin","Java","C++")),
         Pitanje("DDG-Pitanje3","Koji od ovih predmeta nije izborni u 3. semestru?",
             listOf("NA","SP","DM")),
@@ -37,7 +37,7 @@ fun pitanja() : List<Pitanje> {
 
         Pitanje("TDG-Pitanje1","Koliko predmeta ima u 4. semestru?",
             listOf("4","7","6")),
-        Pitanje("TDG-Pitanje2","U kojem programskom jeziku programirano na RMA?",
+        Pitanje("TDG-Pitanje2","U kojem programskom jeziku programiramo na RMA?",
             listOf("Kotlin","Java","C++")),
         Pitanje("TDG-Pitanje3","Koji od ovih predmeta nije izborni u 4. semestru?",
             listOf("AFJ","US","CCI")),
