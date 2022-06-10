@@ -1,5 +1,6 @@
 package ba.etf.rma22.projekat.view
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.icu.text.SimpleDateFormat
 import android.icu.util.Calendar
@@ -12,7 +13,13 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import ba.etf.rma22.projekat.R
 import ba.etf.rma22.projekat.data.models.Anketa
+import ba.etf.rma22.projekat.data.models.Istrazivanje
+import ba.etf.rma22.projekat.viewmodel.UpisIstrazivanjeViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import java.util.*
+import kotlin.collections.ArrayList
 
 class AnketaListAdapter(private var ankete: List<Anketa>, private val onItemClicked: (anketa : Anketa) -> Unit) : RecyclerView.Adapter<AnketaListAdapter.AnketaViewHolder>() {
 
@@ -36,42 +43,60 @@ class AnketaListAdapter(private var ankete: List<Anketa>, private val onItemClic
         return 0
     }
 
+    @SuppressLint("SetTextI18n", "SimpleDateFormat")
     override fun onBindViewHolder(holder: AnketaViewHolder, position: Int) {
+
+        val upisIstrazivanjeViewModel = UpisIstrazivanjeViewModel()
+
+        GlobalScope.launch(Dispatchers.IO){
+
+            val listaIstrazivanja : ArrayList<Istrazivanje> = upisIstrazivanjeViewModel.getIstrazivanjaZaAnketu(ankete[position].id)
+                .distinctBy { istrazivanje -> istrazivanje.id } as ArrayList<Istrazivanje>
+
+            var naziviIstrazivanja = ""
+
+            for (i in 0 until listaIstrazivanja.size) {
+                naziviIstrazivanja += listaIstrazivanja[i].naziv
+                if (i != listaIstrazivanja.size - 1)
+                    naziviIstrazivanja += ", "
+            }
+        }
         holder.textView1.text = ankete[position].naziv
         holder.textView2.text = ankete[position].nazivIstrazivanja
         holder.progressBar.max = 100
-        val progres : Int = zaokruziProgres(ankete[position].progres)
+        val progres = zaokruziProgres(ankete[position].progres)
         var boja = ""
         val danasnjiDatum: Date = Calendar.getInstance().time
         val formatiraj = SimpleDateFormat("dd.MM.yyyy")
-        if(ankete[position].datumRada != null && ankete[position].datumPocetka.before(ankete[position].datumRada) && ankete[position].datumKraja.after(ankete[position].datumRada)
+        if(ankete[position].datumRada != null && ankete[position].datumPocetak.before(ankete[position].datumRada) && ankete[position].datumKraj.after(ankete[position].datumRada)
             && danasnjiDatum.after((ankete[position].datumRada))) {
             boja = "plava"
             val datum = ankete[position].datumRada
             holder.textView3.text = "Anketa urađena: " + formatiraj.format(datum)
             holder.progressBar.setProgress(100)
         }
-       else if(ankete[position].datumRada != null && ankete[position].datumPocetka.before(ankete[position].datumRada) && ankete[position].datumKraja.after(ankete[position].datumRada)
+       else if(ankete[position].datumRada != null && ankete[position].datumPocetak.before(ankete[position].datumRada) && ankete[position].datumKraj.after(ankete[position].datumRada)
             && danasnjiDatum.before(ankete[position].datumRada)) {
             boja = "zelena"
-            val datum = ankete[position].datumKraja
+            val datum = ankete[position].datumKraj
             holder.textView3.text = "Vrijeme zatvaranja: " + formatiraj.format(datum)
-            holder.progressBar.setProgress(progres)
+            holder.progressBar.progress = progres
         }
-        else if(ankete[position].datumPocetka.after(danasnjiDatum)){
-            boja = "zuta";
-            val datum = ankete[position].datumPocetka
+        else if(ankete[position].datumPocetak.after(danasnjiDatum)){
+            boja = "zuta"
+            val datum = ankete[position].datumPocetak
             holder.textView3.text = "Vrijeme aktiviranja: " + formatiraj.format(datum)
-            holder.progressBar.setProgress(0)
+            holder.progressBar.progress = 0
         }
         else{
             boja = "crvena"
-            val datum = ankete[position].datumKraja
+            val datum = ankete[position].datumKraj
+            if(datum != null)
             holder.textView3.text = "Anketa zatvorena: " + formatiraj.format(datum)
-            holder.progressBar.setProgress(progres)
+            holder.progressBar.progress = progres
         }
         val context: Context = holder.imageView.context
-        var id: Int = context.resources.getIdentifier(boja, "drawable", context.packageName)
+        val id: Int = context.resources.getIdentifier(boja, "drawable", context.packageName)
         holder.imageView.setImageResource(id)
         holder.itemView.setOnClickListener{
             onItemClicked(ankete[position])
@@ -86,8 +111,9 @@ class AnketaListAdapter(private var ankete: List<Anketa>, private val onItemClic
         val textView3: TextView = itemView.findViewById(R.id.textView3)
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     fun updateAnkete(ankete: List<Anketa>) {
-        this.ankete = ankete.sortedBy { anketa -> anketa.datumPocetka }
+        this.ankete = ankete.sortedBy { anketa -> anketa.datumPocetak }
         notifyDataSetChanged()
     }
 

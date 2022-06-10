@@ -1,6 +1,6 @@
 package ba.etf.rma22.projekat.data.models
 
-fun istrazivanje() : List<Istrazivanje>{
+/*fun istrazivanje() : List<Istrazivanje>{
     return listOf(
         Istrazivanje("PPG",1),
         Istrazivanje("DPG",1),
@@ -18,4 +18,4 @@ fun istrazivanje() : List<Istrazivanje>{
         Istrazivanje("DPPG",5),
         Istrazivanje("TPPG",5),
     )
-}
+}*/

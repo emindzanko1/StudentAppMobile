@@ -4,7 +4,10 @@ import ba.etf.rma22.projekat.data.models.Anketa
 import ba.etf.rma22.projekat.data.models.Grupa
 import ba.etf.rma22.projekat.data.models.Istrazivanje
 
-object KorisnikRepository {
+/*object KorisnikRepository {
+
+    //moguce da treba obrisati
+
 
     private var mojaIstrazivanja: ArrayList<Istrazivanje> =
         arrayListOf(Istrazivanje("PPG",1), Istrazivanje("TDG",2),
@@ -35,4 +38,4 @@ object KorisnikRepository {
     fun upisiIstrazivanje(istrazivanje: Istrazivanje) = mojaIstrazivanja.add(istrazivanje)
 
     fun upisiGrupu(grupa: Grupa) = mojeGrupe.add(grupa)
-}
+}*/

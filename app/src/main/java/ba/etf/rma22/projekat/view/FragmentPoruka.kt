@@ -8,16 +8,15 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import ba.etf.rma22.projekat.R
 
-class FragmentPoruka(poruka: String) : Fragment() {
+class FragmentPoruka(private var poruka: String) : Fragment() {
     private lateinit var textView: TextView
-    private var poruka = poruka
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        var view = inflater.inflate(R.layout.fragment_poruka,container,false)
+        val view = inflater.inflate(R.layout.fragment_poruka,container,false)
         textView = view.findViewById(R.id.tvPoruka)
         textView.text = poruka
         return view

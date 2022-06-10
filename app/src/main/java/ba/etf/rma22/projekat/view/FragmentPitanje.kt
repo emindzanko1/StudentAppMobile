@@ -11,12 +11,11 @@ import ba.etf.rma22.projekat.MainActivity
 import ba.etf.rma22.projekat.R
 import ba.etf.rma22.projekat.data.models.Pitanje
 
-class FragmentPitanje(pitanje: Pitanje) : Fragment() {
+class FragmentPitanje(private val pitanje: Pitanje) : Fragment() {
 
     private lateinit var textView: TextView
     private lateinit var listView: ListView
     private lateinit var button: Button
-    private val pitanje = pitanje
     private lateinit var listaAdapter: ArrayAdapter<String>
     private var listaOdgovora: ArrayList<String> = arrayListOf()
     var brojac: Int = 0
@@ -26,21 +25,21 @@ class FragmentPitanje(pitanje: Pitanje) : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        var view = inflater.inflate(R.layout.fragment_pitanje,container,false)
+        val view = inflater.inflate(R.layout.fragment_pitanje,container,false)
         textView = view.findViewById(R.id.tekstPitanja)
         listView = view.findViewById(R.id.odgovoriLista)
         button = view.findViewById(R.id.dugmeZaustavi)
-        textView.text = pitanje.tekst
+        textView.text = pitanje.tekstPitanja
         listaOdgovora.addAll(pitanje.opcije)
         listaAdapter = ArrayAdapter(view.context,android.R.layout.simple_list_item_1,listaOdgovora)
         listView.adapter = listaAdapter
 
         val bojaZaOdgovor: Int = Color.parseColor("#0000FF")
 
-        listView.setOnItemClickListener(AdapterView.OnItemClickListener{ parent, view, position, id ->
+        listView.onItemClickListener = AdapterView.OnItemClickListener{ parent, view, position, id ->
             (view as TextView).setTextColor(bojaZaOdgovor)
             brojac++
-        })
+        }
 
         button.setOnClickListener{
             (activity as MainActivity).viewPagerAdapter.change()

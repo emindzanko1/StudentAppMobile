@@ -1,6 +1,6 @@
 package ba.etf.rma22.projekat.data.models
 
-fun pitanjaZaAnketu() : List<PitanjeAnketa> {
+/*fun pitanjaZaAnketu() : List<PitanjeAnketa> {
     return listOf(
         PitanjeAnketa("PPG-Pitanje1", "Anketa 1","PPG"),
         PitanjeAnketa("PPG-Pitanje2", "Anketa 1","PPG"),
@@ -74,4 +74,4 @@ fun pitanjaZaAnketu() : List<PitanjeAnketa> {
         PitanjeAnketa("TPPG-Pitanje4", "Anketa 12","TPPG"),
         PitanjeAnketa("TPPG-Pitanje5", "Anketa 12","TPPG"),
     )
-}
+}*/

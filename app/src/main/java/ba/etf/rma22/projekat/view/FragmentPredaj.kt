@@ -1,5 +1,6 @@
 package ba.etf.rma22.projekat.view
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -15,12 +16,13 @@ class FragmentPredaj : Fragment() {
     private lateinit var textView: TextView
     private lateinit var button: Button
 
+    @SuppressLint("SetTextI18n")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        var view = inflater.inflate(R.layout.fragment_predaj,container,false)
+        val view = inflater.inflate(R.layout.fragment_predaj,container,false)
         textView = view.findViewById(R.id.progresTekst)!!
         button = view.findViewById(R.id.dugmePredaj)!!
 

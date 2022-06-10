@@ -1,6 +1,6 @@
 package ba.etf.rma22.projekat.data.models
 
-fun grupe() : List<Grupa>{
+/*fun grupe() : List<Grupa>{
     return listOf(
         Grupa("PPG-grupa1","PPG"),
         Grupa("PPG-grupa2","PPG"),
@@ -47,4 +47,4 @@ fun grupe() : List<Grupa>{
         Grupa("TPPG-grupa1","TPPG"),
         Grupa("TPPG-grupa2","TPPG"),
         Grupa("TPPG-grupa3","TPPG"))
-}
+}*/

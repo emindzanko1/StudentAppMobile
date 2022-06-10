@@ -10,7 +10,7 @@ import org.hamcrest.Matchers.*
 class UpisIstrazivanjeTest {
     val upisIstrazivanjeViewModel = UpisIstrazivanjeViewModel()
 
-    @Test
+    /*@Test
     fun getAll() {
         val svaIstrazivanja = upisIstrazivanjeViewModel.getAll()
         assertFalse(svaIstrazivanja.isEmpty())
@@ -87,5 +87,5 @@ class UpisIstrazivanjeTest {
         assertNotEquals(grupeZaIstrazivanje.size,2)
         assertEquals(grupeZaIstrazivanje.size, 3)
         assertFalse(grupeZaIstrazivanje.toString().contains("PPPG"))
-    }
+    }*/
 }

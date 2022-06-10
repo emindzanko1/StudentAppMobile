@@ -49,15 +49,15 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    fun showAnketaDetails(anketa: Anketa) {
+    suspend fun showAnketaDetails(anketa: Anketa) {
         var brojPitanja =
-            PitanjeAnketaRepository.getPitanja(anketa.naziv, anketa.nazivIstrazivanja).size
+            PitanjeAnketaRepository.getPitanja(anketa.id)!!.size
         var listaPitanja =
-            PitanjeAnketaRepository.getPitanja(anketa.naziv, anketa.nazivIstrazivanja)
+            PitanjeAnketaRepository.getPitanja(anketa.id)
         fragments.removeAt(0)
         var brojac: Int = 0
         while (brojac < brojPitanja) {
-            val fragmentPitanje = FragmentPitanje(listaPitanja[brojac])
+            val fragmentPitanje = FragmentPitanje(listaPitanja!![brojac])
             fragments.add(brojac, fragmentPitanje)
             brojac++
         }

@@ -1,6 +1,6 @@
 package ba.etf.rma22.projekat.data.models
 
-fun pitanja() : List<Pitanje> {
+/*fun pitanja() : List<Pitanje> {
     return listOf(
         Pitanje("PPG-Pitanje1","Naziv ulice u kojoj je smješten ETF?",
             listOf("Bulevar Meše Selimovića", "Zmaja od Bosne","Zvornička")),
@@ -83,4 +83,4 @@ fun pitanja() : List<Pitanje> {
         Pitanje("TPPG-Pitanje3","Koliko ima semestara treći ciklus?",
             listOf("8","5","7")),
     )
-}
+}*/
