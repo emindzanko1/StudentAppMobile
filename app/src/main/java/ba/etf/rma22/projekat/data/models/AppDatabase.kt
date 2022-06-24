@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 
 @Database(
-    entities = [Account::class, Grupa::class, Anketa::class, AnketaTaken::class, Odgovor::class, Pitanje::class, Istrazivanje::class], version = 1
+    entities = [Account::class, Grupa::class, Anketa::class, AnketaTaken::class, Odgovor::class, Pitanje::class, Istrazivanje::class], version = 4
 )
 
 @TypeConverters(Converters::class)

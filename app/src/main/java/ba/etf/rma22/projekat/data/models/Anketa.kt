@@ -11,12 +11,12 @@ data class Anketa(
     @PrimaryKey @SerializedName("id") val id: Int,
     @ColumnInfo(name = "naziv") @SerializedName("naziv") val naziv: String,
     @ColumnInfo(name = "datumPocetak") @SerializedName("datumPocetak") val datumPocetak: Date,
-    @ColumnInfo(name = "datumKraj") @SerializedName("datumKraj") val datumKraj: Date,
+    @ColumnInfo(name = "datumKraj") @SerializedName("datumKraj") val datumKraj: Date?,
     @ColumnInfo(name = "trajanje") @SerializedName("trajanje") val trajanje: Int,
-    val nazivIstrazivanja: String,
+    val nazivIstrazivanja: String?,
     val datumRada: Date?,
-    val nazivGrupe: String,
-    val progres: Float,
+    val nazivGrupe: String?,
+    val progres: Float?,
 )  {
     override fun equals(other: Any?) : Boolean {
         if (javaClass != other?.javaClass) return false

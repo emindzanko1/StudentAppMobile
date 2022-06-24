@@ -64,7 +64,7 @@ class AnketaListAdapter(private var ankete: List<Anketa>, private val onItemClic
         holder.textView1.text = ankete[position].naziv
         holder.textView2.text = ankete[position].nazivIstrazivanja
         holder.progressBar.max = 100
-        val progres = zaokruziProgres(ankete[position].progres)
+        val progres = zaokruziProgres(ankete[position].progres!!)
         var boja = ""
         val danasnjiDatum: Date = Calendar.getInstance().time
         val formatiraj = SimpleDateFormat("dd.MM.yyyy")
