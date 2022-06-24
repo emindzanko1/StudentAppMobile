@@ -1,14 +1,18 @@
 package ba.etf.rma22.projekat.data.models
 
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 import java.util.*
 
-class Anketa(
-    @SerializedName("id") val id: Int,
-    @SerializedName("naziv") val naziv: String,
-    @SerializedName("datumPocetak") val datumPocetak: Date,
-    @SerializedName("datumKraj") val datumKraj: Date,
-    @SerializedName("trajanje") val trajanje: Int,
+@Entity
+data class Anketa(
+    @PrimaryKey @SerializedName("id") val id: Int,
+    @ColumnInfo(name = "naziv") @SerializedName("naziv") val naziv: String,
+    @ColumnInfo(name = "datumPocetak") @SerializedName("datumPocetak") val datumPocetak: Date,
+    @ColumnInfo(name = "datumKraj") @SerializedName("datumKraj") val datumKraj: Date,
+    @ColumnInfo(name = "trajanje") @SerializedName("trajanje") val trajanje: Int,
     val nazivIstrazivanja: String,
     val datumRada: Date?,
     val nazivGrupe: String,
@@ -21,3 +25,4 @@ class Anketa(
         return (id == other.id)
     }
 }
+

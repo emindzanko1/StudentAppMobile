@@ -6,9 +6,17 @@ import android.os.Handler
 import android.os.Looper
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
+import ba.etf.rma22.projekat.data.models.Account
 import ba.etf.rma22.projekat.data.models.Anketa
+import ba.etf.rma22.projekat.data.models.AppDatabase
+import ba.etf.rma22.projekat.data.repositories.AccountRepository
 import ba.etf.rma22.projekat.data.repositories.PitanjeAnketaRepository
 import ba.etf.rma22.projekat.view.*
+import ba.etf.rma22.projekat.viewmodel.AccountViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -16,10 +24,30 @@ class MainActivity : AppCompatActivity() {
     lateinit var viewPagerAdapter: ViewPagerAdapter
     lateinit var viewPagerAdapter2: ViewPagerAdapter
     private lateinit var fragments: MutableList<Fragment>
+    private var accountViewModel = AccountViewModel()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        GlobalScope.launch(Dispatchers.Main) {
+            accountViewModel.postaviContext(applicationContext)
+            AppDatabase.getInstance(applicationContext)
+            AppDatabase.getInstance(applicationContext).accountDao().obrisiSve()
+            AppDatabase.getInstance(applicationContext).accountDao()
+                .dodajAccount(Account(AccountRepository.acHash,Date().toString()))
+        }
+
+        val payload = intent?.getStringExtra("payload")
+        AccountRepository.setContext(applicationContext)
+        if (payload != null) {
+            GlobalScope.launch(Dispatchers.Main) {
+                accountViewModel.postaviHash(payload)
+                accountViewModel.postaviContext(applicationContext)
+            }
+        }
+
         viewPager = findViewById(R.id.pager)
         fragments = mutableListOf(
             FragmentAnkete(),
@@ -50,12 +78,12 @@ class MainActivity : AppCompatActivity() {
 
 
     suspend fun showAnketaDetails(anketa: Anketa) {
-        var brojPitanja =
+        val brojPitanja =
             PitanjeAnketaRepository.getPitanja(anketa.id)!!.size
-        var listaPitanja =
+        val listaPitanja =
             PitanjeAnketaRepository.getPitanja(anketa.id)
         fragments.removeAt(0)
-        var brojac: Int = 0
+        var brojac = 0
         while (brojac < brojPitanja) {
             val fragmentPitanje = FragmentPitanje(listaPitanja!![brojac])
             fragments.add(brojac, fragmentPitanje)

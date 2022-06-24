@@ -1,5 +1,6 @@
 package ba.etf.rma22.projekat.data.models
 
+import androidx.room.Entity
 import com.google.gson.annotations.SerializedName
 
-data class Message(@SerializedName("message") val message: String)
+@Entity data class Message(@SerializedName("message") val message: String)

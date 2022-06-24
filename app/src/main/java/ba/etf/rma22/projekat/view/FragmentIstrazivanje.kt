@@ -128,7 +128,8 @@ class FragmentIstrazivanje : Fragment() {
             GlobalScope.launch(Dispatchers.IO) {
                 val istrazivanje = upisIstrazivanjeViewModel.getIstrazivanjeByNaziv(istrazivanje)
                 val grupa = upisIstrazivanjeViewModel.getGrupaZaIstrazivanje(istrazivanje!!.id,grupa)
-                upisIstrazivanjeViewModel.upisiUGrupu(grupa!!.id)
+                upisIstrazivanjeViewModel.upisiUGrupuBaza(grupa!!) //provjeriti bez !!
+                //upisIstrazivanjeViewModel.upisiUGrupu(grupa!!.id)
             }
 
             //upisIstrazivanjeViewModel.upisiIstrazivanje(godina,istrazivanje,grupa)

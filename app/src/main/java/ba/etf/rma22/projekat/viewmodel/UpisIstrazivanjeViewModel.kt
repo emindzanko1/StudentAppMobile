@@ -12,10 +12,9 @@ class UpisIstrazivanjeViewModel {
 
     suspend fun getIstrazivanjaByGodina(godina: Int) : List<Istrazivanje> = IstrazivanjeIGrupaRepository.getIstrazivanjaByGodina(godina)
 
-    //suspend fun getGrupeZaIstrazivanje(idIstrazivanja: Int): List<Grupa> = IstrazivanjeIGrupaRepository.getGrupeZaIstrazivanje(idIstrazivanja)
-
     suspend fun getIstrazivanjeByNaziv(nazivIstrazivanja: String) : Istrazivanje? = IstrazivanjeIGrupaRepository.getIstrazivanjeByNaziv(nazivIstrazivanja)
 
     suspend fun getGrupaZaIstrazivanje(idIstrazivanja : Int, nazivGrupe: String) : Grupa? = IstrazivanjeIGrupaRepository.getGrupaZaIstrazivanje(idIstrazivanja,nazivGrupe)
 
+    suspend fun upisiUGrupuBaza(grupa: Grupa) = IstrazivanjeIGrupaRepository.upisiUGrupuBaza(grupa)
 }

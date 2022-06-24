@@ -1,10 +1,14 @@
 package ba.etf.rma22.projekat.data.models
 
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
-class Grupa(
-    @SerializedName("id") val id: Int,
-    @SerializedName("naziv") val naziv: String,
+@Entity
+data class Grupa(
+    @PrimaryKey @SerializedName("id") val id: Int,
+    @ColumnInfo(name = "naziv") @SerializedName("naziv") val naziv: String
 )  {
     override fun equals(other: Any?) : Boolean{
         if(javaClass != other?.javaClass) return false

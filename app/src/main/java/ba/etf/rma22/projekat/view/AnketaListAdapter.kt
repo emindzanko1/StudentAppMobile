@@ -68,14 +68,14 @@ class AnketaListAdapter(private var ankete: List<Anketa>, private val onItemClic
         var boja = ""
         val danasnjiDatum: Date = Calendar.getInstance().time
         val formatiraj = SimpleDateFormat("dd.MM.yyyy")
-        if(ankete[position].datumRada != null && ankete[position].datumPocetak.before(ankete[position].datumRada) && ankete[position].datumKraj.after(ankete[position].datumRada)
+        if(ankete[position].datumRada != null && ankete[position].datumPocetak.before(ankete[position].datumRada) && ankete[position].datumKraj!!.after(ankete[position].datumRada)
             && danasnjiDatum.after((ankete[position].datumRada))) {
             boja = "plava"
             val datum = ankete[position].datumRada
             holder.textView3.text = "Anketa urađena: " + formatiraj.format(datum)
             holder.progressBar.setProgress(100)
         }
-       else if(ankete[position].datumRada != null && ankete[position].datumPocetak.before(ankete[position].datumRada) && ankete[position].datumKraj.after(ankete[position].datumRada)
+       else if(ankete[position].datumRada != null && ankete[position].datumPocetak.before(ankete[position].datumRada) && ankete[position].datumKraj!!.after(ankete[position].datumRada)
             && danasnjiDatum.before(ankete[position].datumRada)) {
             boja = "zelena"
             val datum = ankete[position].datumKraj
